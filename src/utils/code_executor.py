@@ -69,8 +69,22 @@ class DataAnalysisCodeExecutor:
             }
         
         # Setup execution environment
-        execution_globals = self._create_safe_globals()
-        execution_locals = context.copy() if context else {}
+        # Use a single shared namespace for globals and locals to avoid
+        # name resolution issues for imports and function globals
+        execution_ns = self._create_safe_globals()
+        if context:
+            try:
+                execution_ns.update(context)
+            except Exception:
+                pass
+        # Provide common typing aliases to avoid NameError in annotations
+        try:
+            from typing import Any as _Any, Dict as _Dict, List as _List, Tuple as _Tuple, Optional as _Optional
+            execution_ns.update({
+                'Any': _Any, 'Dict': _Dict, 'List': _List, 'Tuple': _Tuple, 'Optional': _Optional,
+            })
+        except Exception:
+            pass
         
         # Setup output capture
         stdout_capture = StringIO()
@@ -99,11 +113,11 @@ class DataAnalysisCodeExecutor:
             sys.stdout, sys.stderr = stdout_capture, stderr_capture
             
             # Execute the code
-            exec(code, execution_globals, execution_locals)
+            exec(code, execution_ns, execution_ns)
             
             # Successful execution
             result['success'] = True
-            result['locals'] = self._filter_locals(execution_locals)
+            result['locals'] = self._filter_locals(execution_ns)
             result['execution_time'] = time.time() - start_time
             
         except TimeoutError:
@@ -220,13 +234,21 @@ class DataAnalysisCodeExecutor:
             # Basic functions
             'print': print, 'len': len, 'range': range, 'enumerate': enumerate,
             'zip': zip, 'map': map, 'filter': filter, 'sorted': sorted,
-            'sum': sum, 'min': max, 'max': max, 'abs': abs, 'round': round,
+            'sum': sum, 'min': min, 'max': max, 'abs': abs, 'round': round,
+            'next': next,
             'any': any, 'all': all,
+
+            # Introspection and utility
+            'locals': locals, 'globals': globals, 'isinstance': isinstance,
+            'getattr': getattr, 'setattr': setattr, 'hasattr': hasattr,
+            'type': type, 'dir': dir,
             
-            # Exceptions
+            # Exceptions / Warnings
             'Exception': Exception, 'ValueError': ValueError,
             'TypeError': TypeError, 'KeyError': KeyError,
             'IndexError': IndexError, 'AttributeError': AttributeError,
+            'Warning': Warning, 'UserWarning': UserWarning,
+            'FutureWarning': FutureWarning, 'RuntimeWarning': RuntimeWarning,
             
             # Special
             'None': None, 'True': True, 'False': False,
@@ -239,6 +261,9 @@ class DataAnalysisCodeExecutor:
                 raise ImportError(f"Import of '{name}' is not allowed in this environment")
             return __import__(name, globals, locals, fromlist, level)
         
+        # Expose the safe import to executed code
+        safe_builtins['__import__'] = safe_import
+
         return {
             '__builtins__': safe_builtins,
             '__name__': '__main__',

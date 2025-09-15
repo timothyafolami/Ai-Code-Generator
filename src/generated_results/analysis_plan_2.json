@@ -1,0 +1,461 @@
+{
+  "file": "analysis_plan_2.py",
+  "function": "analyze_data",
+  "success": true,
+  "execution_time": 0.3104441165924072,
+  "output": "",
+  "result": {
+    "cohort_analysis": {
+      "cohort_retention": [
+        {
+          "acquisition_month": "2023-01",
+          "retention_rate": 0.4225352112676056
+        },
+        {
+          "acquisition_month": "2023-02",
+          "retention_rate": 0.38095238095238093
+        },
+        {
+          "acquisition_month": "2023-03",
+          "retention_rate": 0.3835616438356164
+        },
+        {
+          "acquisition_month": "2023-04",
+          "retention_rate": 0.3902439024390244
+        },
+        {
+          "acquisition_month": "2023-05",
+          "retention_rate": 0.423728813559322
+        },
+        {
+          "acquisition_month": "2023-06",
+          "retention_rate": 0.35051546391752575
+        },
+        {
+          "acquisition_month": "2023-07",
+          "retention_rate": 0.449438202247191
+        },
+        {
+          "acquisition_month": "2023-08",
+          "retention_rate": 0.4367816091954023
+        },
+        {
+          "acquisition_month": "2023-09",
+          "retention_rate": 0.43209876543209874
+        },
+        {
+          "acquisition_month": "2023-10",
+          "retention_rate": 0.38144329896907214
+        },
+        {
+          "acquisition_month": "2023-11",
+          "retention_rate": 0.38461538461538464
+        },
+        {
+          "acquisition_month": "2023-12",
+          "retention_rate": 0.32978723404255317
+        }
+      ],
+      "product_retention": [
+        {
+          "product": "Alpha",
+          "retention_rate": 0.4015748031496063,
+          "customer_count": 254
+        },
+        {
+          "product": "Beta",
+          "retention_rate": 0.34782608695652173,
+          "customer_count": 253
+        },
+        {
+          "product": "Delta",
+          "retention_rate": 0.4150197628458498,
+          "customer_count": 253
+        },
+        {
+          "product": "Gamma",
+          "retention_rate": 0.4166666666666667,
+          "customer_count": 240
+        }
+      ],
+      "channel_retention": [
+        {
+          "channel": "Online",
+          "retention_rate": 0.3614457831325301,
+          "customer_count": 332
+        },
+        {
+          "channel": "Retail",
+          "retention_rate": 0.44879518072289154,
+          "customer_count": 332
+        },
+        {
+          "channel": "Wholesale",
+          "retention_rate": 0.375,
+          "customer_count": 336
+        }
+      ],
+      "region_retention": [
+        {
+          "region": "APAC",
+          "retention_rate": 0.3888888888888889,
+          "customer_count": 234
+        },
+        {
+          "region": "EU",
+          "retention_rate": 0.40384615384615385,
+          "customer_count": 260
+        },
+        {
+          "region": "LATAM",
+          "retention_rate": 0.4186046511627907,
+          "customer_count": 258
+        },
+        {
+          "region": "Unknown",
+          "retention_rate": 0.36693548387096775,
+          "customer_count": 248
+        }
+      ]
+    },
+    "return_analysis": {
+      "return_by_product": [
+        {
+          "product": "Alpha",
+          "return_rate": 0.06692913385826772
+        },
+        {
+          "product": "Beta",
+          "return_rate": 0.04743083003952569
+        },
+        {
+          "product": "Delta",
+          "return_rate": 0.043478260869565216
+        },
+        {
+          "product": "Gamma",
+          "return_rate": 0.058333333333333334
+        }
+      ],
+      "return_by_channel": [
+        {
+          "channel": "Online",
+          "return_rate": 0.05421686746987952
+        },
+        {
+          "channel": "Retail",
+          "return_rate": 0.0572289156626506
+        },
+        {
+          "channel": "Wholesale",
+          "return_rate": 0.050595238095238096
+        }
+      ]
+    },
+    "predictive_models": {
+      "repeat_customer": {
+        "logistic_regression": {
+          "auc_score": 0.498632333521977,
+          "precision_at_10": 0.4,
+          "top_features": [
+            [
+              "region_EU",
+              -0.23698573195661157
+            ],
+            [
+              "channel_Retail",
+              0.224287029326393
+            ],
+            [
+              "region_LATAM",
+              0.21239489785815918
+            ],
+            [
+              "channel_Online",
+              -0.17749976826121072
+            ],
+            [
+              "product_Delta",
+              0.11469531428823349
+            ],
+            [
+              "marketing_spend",
+              -0.08486789253473374
+            ],
+            [
+              "product_Alpha",
+              -0.0825085778982979
+            ],
+            [
+              "unit_price",
+              0.06944956703552807
+            ],
+            [
+              "product_Beta",
+              -0.06828436393499025
+            ],
+            [
+              "discount_rate",
+              0.06485202274971401
+            ]
+          ]
+        },
+        "gradient_boosting": {
+          "auc_score": 0.5193831352574986,
+          "precision_at_10": 0.3,
+          "top_features": [
+            [
+              "region",
+              0.19319506845140857
+            ],
+            [
+              "unit_price",
+              0.1856431175569758
+            ],
+            [
+              "product",
+              0.1624692142356943
+            ],
+            [
+              "customer_age",
+              0.13038029100543558
+            ],
+            [
+              "channel",
+              0.1257907362005237
+            ],
+            [
+              "discount_rate",
+              0.10643094545890512
+            ],
+            [
+              "revenue",
+              0.008208125753274708
+            ],
+            [
+              "units_sold",
+              0.005854733809781674
+            ],
+            [
+              "marketing_spend",
+              1.3212131961187293e-05
+            ]
+          ]
+        }
+      },
+      "returned": {
+        "logistic_regression": {
+          "auc_score": 0.5228907782864617,
+          "precision_at_10": 0.06666666666666667,
+          "top_features": [
+            [
+              "region_Unknown",
+              0.9762410427854978
+            ],
+            [
+              "revenue",
+              0.7984518967643998
+            ],
+            [
+              "units_sold",
+              -0.7927724828067052
+            ],
+            [
+              "region_APAC",
+              -0.5483074096831703
+            ],
+            [
+              "product_Alpha",
+              0.5452787278827451
+            ],
+            [
+              "discount_rate",
+              0.4972223666834862
+            ],
+            [
+              "product_Delta",
+              -0.48851355755760084
+            ],
+            [
+              "region_LATAM",
+              -0.3854101774266029
+            ],
+            [
+              "customer_age",
+              0.360051498679311
+            ],
+            [
+              "channel_Online",
+              -0.35627374213291796
+            ]
+          ]
+        },
+        "gradient_boosting": {
+          "auc_score": 0.5142249836494441,
+          "precision_at_10": 0.1,
+          "top_features": [
+            [
+              "product",
+              0.22863339663390828
+            ],
+            [
+              "channel",
+              0.17522504993163554
+            ],
+            [
+              "region",
+              0.17256378984553036
+            ],
+            [
+              "unit_price",
+              0.16798688708927104
+            ],
+            [
+              "discount_rate",
+              0.14579582707681596
+            ],
+            [
+              "customer_age",
+              0.0593948060492945
+            ],
+            [
+              "units_sold",
+              0.008669743419352997
+            ],
+            [
+              "revenue",
+              0.006996571275698407
+            ],
+            [
+              "marketing_spend",
+              0.001439244172819412
+            ]
+          ]
+        }
+      }
+    },
+    "high_value_segments": [
+      {
+        "product": "Gamma",
+        "channel": "Wholesale",
+        "region": "Unknown",
+        "customer_value": 15216.97157265828,
+        "repeat_customer": 0.5,
+        "returned": 0.0,
+        "customer_age": 35.99733469763176,
+        "revenue": 105456.71597682465
+      },
+      {
+        "product": "Gamma",
+        "channel": "Retail",
+        "region": "LATAM",
+        "customer_value": 13527.64162939547,
+        "repeat_customer": 0.5333333333333333,
+        "returned": 0.0,
+        "customer_age": 34.14483088402844,
+        "revenue": 122481.84292606778
+      },
+      {
+        "product": "Alpha",
+        "channel": "Online",
+        "region": "LATAM",
+        "customer_value": 10922.711532254665,
+        "repeat_customer": 0.4642857142857143,
+        "returned": 0.07142857142857142,
+        "customer_age": 38.34803148030261,
+        "revenue": 205388.50205874536
+      },
+      {
+        "product": "Alpha",
+        "channel": "Retail",
+        "region": "EU",
+        "customer_value": 10277.407345869979,
+        "repeat_customer": 0.5625,
+        "returned": 0.0,
+        "customer_age": 34.2530964772423,
+        "revenue": 110126.64003901964
+      },
+      {
+        "product": "Delta",
+        "channel": "Retail",
+        "region": "Unknown",
+        "customer_value": 10157.811068580004,
+        "repeat_customer": 0.5454545454545454,
+        "returned": 0.09090909090909091,
+        "customer_age": 34.25157347048496,
+        "revenue": 137555.4802138629
+      }
+    ],
+    "action_rules": [
+      {
+        "target": "increase_retention",
+        "top_factors": [
+          {
+            "feature": "region_EU",
+            "importance": -0.23698573195661157
+          },
+          {
+            "feature": "channel_Retail",
+            "importance": 0.224287029326393
+          },
+          {
+            "feature": "region_LATAM",
+            "importance": 0.21239489785815918
+          },
+          {
+            "feature": "channel_Online",
+            "importance": -0.17749976826121072
+          },
+          {
+            "feature": "product_Delta",
+            "importance": 0.11469531428823349
+          }
+        ]
+      },
+      {
+        "target": "reduce_returns",
+        "top_factors": [
+          {
+            "feature": "region_Unknown",
+            "importance": 0.9762410427854978
+          },
+          {
+            "feature": "revenue",
+            "importance": 0.7984518967643998
+          },
+          {
+            "feature": "units_sold",
+            "importance": -0.7927724828067052
+          },
+          {
+            "feature": "region_APAC",
+            "importance": -0.5483074096831703
+          },
+          {
+            "feature": "product_Alpha",
+            "importance": 0.5452787278827451
+          }
+        ]
+      }
+    ],
+    "data_summary": {
+      "row_count": 1000,
+      "repeat_customer_rate": 0.395,
+      "return_rate": 0.054,
+      "missing_values": {
+        "date": 0,
+        "product": 0,
+        "region": 248,
+        "channel": 0,
+        "units_sold": 0,
+        "unit_price": 0,
+        "discount_rate": 0,
+        "marketing_spend": 0,
+        "customer_age": 0,
+        "repeat_customer": 0,
+        "returned": 0,
+        "revenue": 0
+      }
+    }
+  }
+}

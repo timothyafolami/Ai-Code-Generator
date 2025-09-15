@@ -1,0 +1,148 @@
+{
+  "file": "analysis_plan_1.py",
+  "function": "analyze_data",
+  "success": true,
+  "execution_time": 1.2280676364898682,
+  "output": "",
+  "result": {
+    "model_performance": {
+      "r2": 0.8461819851835957,
+      "rmse": 2206.146685673587,
+      "best_params": {
+        "model__alpha": 0.01,
+        "model__l1_ratio": 0.7
+      }
+    },
+    "elasticity_estimates": {
+      "price_elasticity": 0.982262156712365,
+      "discount_elasticity": -0.11591963630711014,
+      "marketing_elasticity": -0.031709751176475884
+    },
+    "product_elasticities": {
+      "Delta": {
+        "price_elasticity": NaN,
+        "discount_elasticity": NaN
+      },
+      "Gamma": {
+        "price_elasticity": NaN,
+        "discount_elasticity": NaN
+      },
+      "Alpha": {
+        "price_elasticity": NaN,
+        "discount_elasticity": NaN
+      },
+      "Beta": {
+        "price_elasticity": NaN,
+        "discount_elasticity": NaN
+      }
+    },
+    "marketing_roi": {
+      "('Alpha', 'Online')": {
+        "marketing_spend": 208182.7171265269,
+        "revenue": 588480.3335164911,
+        "roi": 2.8267492212565912
+      },
+      "('Alpha', 'Retail')": {
+        "marketing_spend": 189458.95542859478,
+        "revenue": 550123.7060987222,
+        "roi": 2.90365638749686
+      },
+      "('Alpha', 'Wholesale')": {
+        "marketing_spend": 214861.94860951343,
+        "revenue": 461161.91913558485,
+        "roi": 2.1463173080203832
+      },
+      "('Beta', 'Online')": {
+        "marketing_spend": 202041.6582585082,
+        "revenue": 647412.9483572649,
+        "roi": 3.2043537651473497
+      },
+      "('Beta', 'Retail')": {
+        "marketing_spend": 197068.6559489619,
+        "revenue": 438055.9433302485,
+        "roi": 2.222859547201149
+      },
+      "('Beta', 'Wholesale')": {
+        "marketing_spend": 222258.53808749132,
+        "revenue": 516363.09471714706,
+        "roi": 2.323254256778574
+      },
+      "('Delta', 'Online')": {
+        "marketing_spend": 168278.62700246036,
+        "revenue": 458012.39232413005,
+        "roi": 2.721750233423485
+      },
+      "('Delta', 'Retail')": {
+        "marketing_spend": 194928.84121655254,
+        "revenue": 478548.33550784056,
+        "roi": 2.4549898953957574
+      },
+      "('Delta', 'Wholesale')": {
+        "marketing_spend": 237642.3245010004,
+        "revenue": 599661.2951657593,
+        "roi": 2.523377501987172
+      },
+      "('Gamma', 'Online')": {
+        "marketing_spend": 205792.50384250388,
+        "revenue": 501072.39423094824,
+        "roi": 2.4348427900679344
+      },
+      "('Gamma', 'Retail')": {
+        "marketing_spend": 208002.4015658849,
+        "revenue": 540892.3302227749,
+        "roi": 2.600413870949691
+      },
+      "('Gamma', 'Wholesale')": {
+        "marketing_spend": 143278.66610150866,
+        "revenue": 424583.20456217154,
+        "roi": 2.9633386191728435
+      }
+    },
+    "interaction_effects": {
+      "discount_impact": [
+        {
+          "discount_bin": "(-0.0007750000000000001, 0.0685]",
+          "units_sold": 99.67,
+          "revenue": 7110.6401026751155
+        },
+        {
+          "discount_bin": "(0.0685, 0.138]",
+          "units_sold": 99.975,
+          "revenue": 7380.043577137724
+        },
+        {
+          "discount_bin": "(0.138, 0.203]",
+          "units_sold": 92.005,
+          "revenue": 5980.430470371219
+        },
+        {
+          "discount_bin": "(0.203, 0.279]",
+          "units_sold": 97.325,
+          "revenue": 5604.1648673458085
+        },
+        {
+          "discount_bin": "(0.279, 0.35]",
+          "units_sold": 99.845,
+          "revenue": 4946.560468315549
+        }
+      ]
+    },
+    "recommendations": [
+      {
+        "action": "Increase prices",
+        "reason": "Price elasticity < 1 indicates inelastic demand; increasing prices should increase revenue",
+        "elasticity": 0.982262156712365
+      },
+      {
+        "action": "Reduce discounts",
+        "reason": "Discount elasticity > -1 indicates discounts are not effectively driving revenue",
+        "elasticity": -0.11591963630711014
+      },
+      {
+        "action": "Optimize marketing spend",
+        "reason": "Low marketing elasticity indicates need for better targeting",
+        "elasticity": -0.031709751176475884
+      }
+    ]
+  }
+}
